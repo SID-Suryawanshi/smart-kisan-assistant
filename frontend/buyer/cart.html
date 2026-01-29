@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+
+    <link rel="stylesheet" href="../css/cart.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h2>🛒 My Cart</h2>
+        <nav>
+            <a href="./buyerDashboard.html">Home</a>
+            <a href="../profile.html">Profile</a>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <div class="container">
+
+            <!-- CART ITEMS -->
+            <div class="cart-items" id="cartItems">
+                <span id="cart-head">Cart Items</span>
+
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="summary" id="orderSummary">
+                <h3>Order Summary</h3>
+
+                <div class="row">
+                    <span>Items Total</span>
+                    <span id="totalPrice"></span>
+                </div>
+
+                <div class="row">
+                    <span>Delivery</span>
+                    <span id="deliveryCharges"></span>
+                </div>
+
+                <div class="row total">
+                    <span>Total Amount</span>
+                    <span id="finalPrice"></span>
+                </div>
+
+                <button class="checkout" id="checkoutBtn">Proceed to Checkout</button>
+            </div>
+
+        </div>
+
+        <footer>
+            © 2026 Smart Kisan Assistant
+        </footer>
+    </div>
+
+    <script src="../js/cart.js"></script>
+</body>
+
+</html>

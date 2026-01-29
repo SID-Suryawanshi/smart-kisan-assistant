@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  background: #f4fff4;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #1b5e20;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+th {
+  background: #e8f5e9;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.accept {
+  background: #2e7d32;
+  color: white;
+}
+
+.deliver {
+  background: #1565c0;
+  color: white;
+}

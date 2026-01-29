@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Dashboard</title>
+
+    <link rel="stylesheet" href="../css/buyerDashboard.css">
+</head>
+
+<body>
+
+    <header>
+        <h2>🛒 Buyer Panel</h2>
+        <nav>
+            <a href="#">Home</a>
+            <a href="cart.html">Cart</a>
+            <a href="../profile.html">Profile</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="welcome">
+            <h3>Welcome 👋</h3>
+            <p>Buy fresh products directly from farmers.</p>
+        </div>
+
+        <h3 style="margin-bottom:20px;color:#1b5e20;">Categories</h3>
+        <div class="categories">
+            <div class="category" data-category="All" onclick="filterCategory('All')">All</div>
+            <div class="category" data-category="Vegetables" onclick="filterCategory('Vegetables')">🥦 Vegetables</div>
+            <div class="category" data-category="Fruits" onclick="filterCategory('Fruits')">🍎 Fruits</div>
+            <div class="category" data-category="Grains" onclick="filterCategory('Grains')">🌾 Grains</div>
+            <div class="category" data-category="Pulses" onclick="filterCategory('Pulses')">🫘 Pulses</div>
+        </div>
+
+        <h3 style="margin-bottom:20px;color:#1b5e20;">Available Products</h3>
+
+        <input type="text" id="searchInput" placeholder="Search products..." class="search" />
+
+        <select id="sortPrice" class="search">
+            <option value="">Sort by price</option>
+            <option value="low">Low to High</option>
+            <option value="high">High to Low</option>
+        </select>
+
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+            <p>Loading products...</p>
+        </div>
+
+
+        <div class="products" id="availableProducts">
+            <div class="product">
+                <h4>Tomato</h4>
+                <p>₹25 / kg</p>
+                <p>Farmer: Ramesh</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <h4>Onion</h4>
+                <p>₹30 / kg</p>
+                <p>Farmer: Suresh</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <h4>Wheat</h4>
+                <p>₹22 / kg</p>
+                <p>Farmer: Mahesh</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <h4>Potato</h4>
+                <p>₹20 / kg</p>
+                <p>Farmer: Anil</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Smart Kisan Assistant
+    </footer>
+
+
+
+    <script src="../js/buyerDashboard.js"></script>
+
+</body>
+
+</html>

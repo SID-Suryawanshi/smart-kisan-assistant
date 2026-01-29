@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisan Dashboard</title>
+
+    <link rel="stylesheet" href="../css/kisanDashboard.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>🌾 Kisan Panel</h2>
+        <a href="#">Dashboard</a>
+        <a href="addProduct.html">Add Product</a>
+        <a href="myProducts.html">My Products</a>
+        <a href="orders.html">Orders</a>
+        <a href="#">Weather</a>
+        <a href="#">Crop Advice</a>
+        <a href="../profile.html">Profile</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="topbar">
+            <h3>Welcome, Kisan 👋</h3>
+            <p>Today: 26 Jan 2026</p>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats">
+            <div class="card">
+                <h4>Total Products</h4>
+                <p id="totalProducts">12</p>
+            </div>
+
+            <div class="card">
+                <h4>Orders Received</h4>
+                <p id="ordersReceived">8</p>
+            </div>
+
+            <div class="card">
+                <h4>Pending Orders</h4>
+                <p id="ordersPending">3</p>
+            </div>
+
+            <div class="card">
+                <h4>Total Earnings</h4>
+                <p id="earnings">₹ 4,200</p>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="section">
+
+            <div class="box">
+                <h4>Recent Orders</h4>
+                <p>No new orders yet.</p>
+            </div>
+
+            <div class="box">
+                <h4>Smart Assistant</h4>
+                <div class="assistant">
+                    Ask farming related questions here.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../js/kisanDashboard.js"></script>
+
+</body>
+
+</html>

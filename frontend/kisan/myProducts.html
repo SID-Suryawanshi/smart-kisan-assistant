@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Products | Kisan</title>
+    <link rel="stylesheet" href="../css/myProducts.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>🌾 Kisan Panel</h2>
+        <a href="kisanDashboard.html">Dashboard</a>
+        <a href="addProduct.html">Add Product</a>
+        <a href="myProducts.html">My Products</a>
+        <a href="#">Orders</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <h3>My Products</h3>
+
+        <div class="products" id="productsList">
+            Loading...
+        </div>
+
+    </div>
+
+    <dialog id="editDialog">
+        <form method="dialog" id="editForm">
+            <h3>Edit Product</h3>
+            <input type="hidden" id="edit-id">
+
+            <label>Product Name</label>
+            <input type="text" id="edit-name" required>
+            
+            <label>Price</label>
+            <input type="number" id="edit-price" required>
+            
+            <label>Category</label>
+            <select id="edit-category" required>
+                <option value="">Select category</option>
+                <option>Vegetables</option>
+                <option>Fruits</option>
+                <option>Grains</option>
+                <option>Pulses</option>
+            </select>
+
+
+            <label>Quantity Available (kg)</label>
+            <input type="number" id="edit-quantity" required>
+
+            <label>Desciption</label>
+            <input type="text" id="edit-description">
+
+            <div class="modal-actions">
+                <button type="button" onclick="editDialog.close()">Cancel</button>
+                <button type="submit" , id="saveBtn">Save Changes</button>
+            </div>
+        </form>
+    </dialog>
+
+
+    <script src="../js/myProducts.js"></script>
+</body>
+
+</html>
