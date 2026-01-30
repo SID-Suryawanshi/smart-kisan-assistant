@@ -67,7 +67,7 @@ function renderProducts(products) {
   src="${
     grocery.image
       ? `http://localhost:5000/uploads/${grocery.image}`
-      : '../images/no-image.png'
+      : "../images/no-image.png"
   }"
   class="product-img"
   alt="${grocery.name}"
@@ -75,11 +75,13 @@ function renderProducts(products) {
 
 
             <h4>${grocery.name}</h4>
+            <p>Rating : ${grocery.averageRating.toFixed(1)} / 5</p>
             <h5>Farmer : ${grocery.kisanId.name || "Certified farmer"}</h5>
             <p>₹${grocery.price} / kg</p>
             <p>Category : ${grocery.category}</p>
             <p>Available : ${grocery.quantity} kg</p>
             <button onclick = "addToCart('${grocery._id}')">Add to Cart</button>
+            <button style="margin-top:5px; background:#444;" onclick="openReviewModal('${grocery._id}')">Leave Review</button>
         </div>
         `;
 
@@ -135,3 +137,50 @@ document.getElementById("sortPrice").addEventListener("change", (e) => {
 
   renderProducts(sorted);
 });
+
+// Function to handle the review process
+async function openReviewModal(productId) {
+  const rating = prompt("Please enter a rating between 1 and 5:");
+
+  if (!rating || rating < 1 || rating > 5) {
+    alert("Please enter a valid rating between 1 and 5.");
+    return;
+  }
+
+  const comment = prompt("Enter your comments about the product:");
+  const buyerId = localStorage.getItem("userId");
+
+  if (!buyerId) {
+    alert("You must be logged in to leave a review.");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/products/review/${productId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          buyerId: buyerId,
+          rating: Number(rating),
+          comment: comment,
+        }),
+      },
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Review submitted successfully!");
+      location.reload(); 
+    } else {
+      alert(data.message || "Failed to submit review");
+    }
+  } catch (error) {
+    console.error("Review Error:", error);
+    alert("Server error. Please try again later.");
+  }
+}

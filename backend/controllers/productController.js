@@ -104,3 +104,25 @@ exports.remove = async (req, res) => {
     });
   }
 };
+
+exports.addReview = async (req, res) => {
+  try {
+    const { rating, comment, buyerId } = req.body;
+    const product = await Product.findById(req.params.id);
+
+    if (!product) return res.status(404).json({ message: "Product not found" });
+
+    const review = { buyerId, rating: Number(rating), comment };
+    product.reviews.push(review);
+
+    // Calculate Average Rating
+    product.averageRating =
+      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      product.reviews.length;
+
+    await product.save();
+    res.status(201).json({ message: "Review added successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
