@@ -1,3 +1,4 @@
+/* GLOBAL STYLES */
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +18,7 @@ body {
   color: white;
   height: 100vh;
   padding: 25px;
+  position: fixed; /* Keeps sidebar fixed while scrolling main content */
 }
 
 .sidebar h2 {
@@ -32,16 +34,18 @@ body {
   margin-bottom: 8px;
   border-radius: 6px;
   font-size: 15px;
+  transition: 0.3s;
 }
 
 .sidebar a:hover {
   background-color: #2e7d32;
 }
 
-/* MAIN */
+/* MAIN CONTENT AREA */
 .main {
   flex: 1;
   padding: 30px 40px;
+  margin-left: 250px; /* Offset for the fixed sidebar */
 }
 
 .topbar {
@@ -55,6 +59,7 @@ body {
   color: #1b5e20;
 }
 
+/* STATS CARDS */
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -66,25 +71,40 @@ body {
   background: white;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .card h4 {
   margin-bottom: 10px;
   color: #2e7d32;
+  font-size: 14px;
 }
 
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* DASHBOARD GRID SECTION */
 .section {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 30px;
+  grid-template-columns: 2fr 1fr; /* 2 parts for orders, 1 part for sidebar tools */
+  gap: 25px;
+  align-items: start;
+}
+
+.tools-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .box {
   background: white;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .box h4 {
@@ -92,58 +112,123 @@ body {
   color: #1b5e20;
 }
 
+/* FARMING TOOLS & ASSISTANT STYLES */
 .assistant {
-  height: 200px;
-  background-color: #f4fff4;
-  border-radius: 8px;
+  background-color: #f4fff4; /* Light green background */
+  border-radius: 10px;
   padding: 15px;
+  border: 1px solid #e0eee0;
+  min-height: 150px;
 }
 
-@media (max-width: 1000px) {
+.input-group {
+  margin-bottom: 12px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #1b5e20;
+}
+
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.primary-btn {
+  width: 100%;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.primary-btn:hover {
+  background-color: #1b5e20;
+}
+
+.result-text {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+/* RECENT ORDERS LIST */
+.order-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.status-accepted {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.status-delivered {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1200px) {
   .stats {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
+@media (max-width: 1000px) {
+  .sidebar {
+    width: 70px;
+    padding: 20px 10px;
+  }
+  .sidebar h2,
+  .sidebar a span {
+    display: none; /* Icon-only sidebar if text labels were in spans */
+  }
+  .main {
+    margin-left: 70px;
+  }
   .section {
     grid-template-columns: 1fr;
   }
 }
 
-#recentOrders {
-  list-style: none;
-  padding: 0;
-}
-
-#recentOrders li {
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-}
-
-#recentOrders li:last-child {
-  border-bottom: none;
-}
-
-.status {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: bold;
-  margin-top: 4px;
-}
-
-.status.pending {
-  background-color: #fff3cd;
-  color: #856404;
-}
-
-.status.accepted {
-  background-color: #e3f2fd;
-  color: #1565c0;
-}
-
-.status.delivered {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  .main {
+    padding: 20px;
+  }
 }

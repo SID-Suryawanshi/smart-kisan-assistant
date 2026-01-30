@@ -37,6 +37,7 @@ async function loadProfile() {
     email.innerText = data.email;
     phone.innerText = data.phone;
     address.innerText = data.address;
+    localStorage.setItem("city", data.address);
 
     avatar.innerText = data.name.charAt(0).toUpperCase();
   } catch (err) {

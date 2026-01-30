@@ -7,9 +7,10 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 const address = document.getElementById("address");
 
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  sendData()
+  sendData();
 });
 
 async function sendData() {
@@ -50,7 +51,6 @@ async function sendData() {
     }
 
     alert(data.message);
-
   } catch (error) {
     alert("Something went wrong");
   }
