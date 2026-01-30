@@ -15,7 +15,8 @@ table {
   background: white;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   border-bottom: 1px solid #eee;
   text-align: left;
@@ -40,4 +41,26 @@ button {
 .deliver {
   background: #1565c0;
   color: white;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.accepted {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.status.delivered {
+  background: #e8f5e9;
+  color: #2e7d32;
 }

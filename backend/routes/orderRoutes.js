@@ -14,5 +14,6 @@ router.put("/status/:orderId", orderController.updateOrderStatus);
 
 router.get("/buyer/:buyerId", orderController.getBuyerOrders);
 
+router.get("/recent/:kisanId", orderController.getRecentOrders);
 
 module.exports = router;

@@ -1,4 +1,6 @@
 const Kisan = require("../models/Kisan");
+const Product = require("../models/Product");
+const Order = require("../models/Order");
 
 exports.signup = async (req, res) => {
   console.log("Request Body : ", req.body);
@@ -95,6 +97,35 @@ exports.updateProfile = async (req, res) => {
     res.status(500).json({
       message: "Server error",
       error: error.message,
+    });
+  }
+};
+
+exports.getDashboardStats = async (req, res) => {
+  try {
+    const kisanId = req.params.kisanId;
+
+    const totalProducts = await Product.countDocuments({ kisanId });
+
+    const orders = await Order.find({ kisanId });
+
+    const ordersReceived = orders.length;
+
+    const pendingOrders = orders.filter((o) => o.status === "Pending").length;
+
+    const earnings = orders
+      .filter((o) => o.status === "Delivered")
+      .reduce((sum, o) => sum + o.totalAmount, 0);
+
+    res.json({
+      totalProducts,
+      ordersReceived,
+      pendingOrders,
+      earnings,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to load dashboard stats",
     });
   }
 };

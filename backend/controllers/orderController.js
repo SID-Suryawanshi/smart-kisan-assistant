@@ -68,11 +68,26 @@ exports.getKisanOrders = async (req, res) => {
 };
 
 exports.updateOrderStatus = async (req, res) => {
-  const { status } = req.body;
+  try {
+    const { status } = req.body;
+    const { orderId } = req.params;
 
-  await Order.findByIdAndUpdate(req.params.id, { status });
+    const updateOrder = await Order.findByIdAndUpdate(
+      orderId,
+      { status },
+      { new: true },
+    );
 
-  res.json({ message: "Status updated" });
+    if (!updateOrder) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    res.json({ message: "Status updated" });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+    });
+  }
 };
 
 exports.getBuyerOrders = async (req, res) => {
@@ -86,5 +101,24 @@ exports.getBuyerOrders = async (req, res) => {
     res.json({ orders });
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch buyer orders" });
+  }
+};
+
+exports.getRecentOrders = async (req, res) => {
+  try {
+    const kisanId = req.params.kisanId;
+
+    const orders = await Order.find({ kisanId })
+      .populate("buyerId", "name")
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    res.json({
+      orders,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to load recent orders",
+    });
   }
 };
