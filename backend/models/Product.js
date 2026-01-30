@@ -25,6 +25,10 @@ const productSchema = new mongoose.Schema({
     type: String,
   },
 
+  image: {
+    type: String,
+  },
+
   kisanId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Kisan",

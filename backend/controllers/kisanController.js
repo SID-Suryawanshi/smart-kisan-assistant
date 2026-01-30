@@ -111,12 +111,17 @@ exports.getDashboardStats = async (req, res) => {
 
     const ordersReceived = orders.length;
 
-    const pendingOrders = orders.filter((o) => o.status === "Pending").length;
+    const pendingOrders = orders.filter(
+      (o) => o.status?.toLowerCase() === "pending",
+    ).length;
 
     const earnings = orders
-      .filter((o) => o.status === "Delivered")
-      .reduce((sum, o) => sum + o.totalAmount, 0);
+      .filter((o) => o.status?.toLowerCase() === "delivered")
+      .reduce((sum, order) => {
+        return sum + order.totalAmount;
+      }, 0);
 
+    console.log(orders.map((o) => o.status));
     res.json({
       totalProducts,
       ordersReceived,

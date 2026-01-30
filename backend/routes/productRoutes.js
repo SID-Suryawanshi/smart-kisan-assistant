@@ -4,13 +4,14 @@ const {
   add,
   getMyProducts,
   update,
-  remove
+  remove,
 } = require("../controllers/productController");
 
-router.post("/add", add);
+const upload = require("../middlewares/upload");
+
+router.post("/add", upload.single("image"), add);
 router.get("/my-products/:id", getMyProducts);
 router.put("/update/:id", update);
 router.delete("/remove/:id", remove);
-
 
 module.exports = router;

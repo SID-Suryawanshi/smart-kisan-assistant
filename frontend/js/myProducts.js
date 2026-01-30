@@ -3,6 +3,7 @@ const productsDiv = document.getElementById("productsList");
 const editDialog = document.getElementById("editDialog");
 const editForm = document.getElementById("editForm");
 
+
 if (!userId) {
   window.location.href = "./login.html";
 }
@@ -26,6 +27,18 @@ async function getMyProducts() {
     data.products.forEach((product) => {
       html += `
     <div class="product-card">
+     
+    <img
+  src="${
+    product.image
+      ? `http://localhost:5000/uploads/${product.image}`
+      : '../assets/images/no-image.png'
+  }"
+  class="product-img"
+  alt="${product.name}"
+/>
+
+
       <div class="product-header">
         <h4>${product.name}</h4>
         <span class="category">${product.category}</span>

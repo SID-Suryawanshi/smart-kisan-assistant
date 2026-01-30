@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +57,7 @@
             padding: 35px;
             border-radius: 12px;
             max-width: 600px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
         }
 
         .form-box h3 {
@@ -70,7 +71,9 @@
             font-weight: bold;
         }
 
-        input, select, textarea {
+        input,
+        select,
+        textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 18px;
@@ -96,49 +99,54 @@
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <h2>🌾 Kisan Panel</h2>
-    <a href="kisanDashboard.html">Dashboard</a>
-    <a href="addProduct.html">Add Product</a>
-    <a href="myProducts.html">My Products</a>
-    <a href="orders.html">Orders</a>
-</div>
-
-<!-- MAIN -->
-<div class="main">
-
-    <div class="form-box">
-        <h3>Add New Product</h3>
-
-        <form id="productForm">
-            <label>Product Name</label>
-            <input type="text" id="productName" placeholder="e.g. Tomato" required>
-
-            <label>Category</label>
-            <select id="category" required>
-                <option value="">Select category</option>
-                <option>Vegetables</option>
-                <option>Fruits</option>
-                <option>Grains</option>
-                <option>Pulses</option>
-            </select>
-
-            <label>Price (per kg)</label>
-            <input type="number" id="price" placeholder="₹" required>
-
-            <label>Quantity Available (kg)</label>
-            <input type="number" id="quantity" required>
-
-            <label>Description</label>
-            <textarea rows="4" id="description" placeholder="Optional"></textarea>
-
-            <button type="submit">Add Product</button>
-        </form>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>🌾 Kisan Panel</h2>
+        <a href="kisanDashboard.html">Dashboard</a>
+        <a href="addProduct.html">Add Product</a>
+        <a href="myProducts.html">My Products</a>
+        <a href="orders.html">Orders</a>
     </div>
 
-</div>
+    <!-- MAIN -->
+    <div class="main">
 
-<script src="../js/addProduct.js"></script>
+        <div class="form-box">
+            <h3>Add New Product</h3>
+
+            <form id="productForm">
+                <label>Product Image</label>
+                <input type="file" id="productImage" accept="image/*" required>
+
+
+                <label>Product Name</label>
+                <input type="text" id="productName" placeholder="e.g. Tomato" required>
+
+                <label>Category</label>
+                <select id="category" required>
+                    <option value="">Select category</option>
+                    <option>Vegetables</option>
+                    <option>Fruits</option>
+                    <option>Grains</option>
+                    <option>Pulses</option>
+                </select>
+
+                <label>Price (per kg)</label>
+                <input type="number" id="price" placeholder="₹" required>
+
+                <label>Quantity Available (kg)</label>
+                <input type="number" id="quantity" required>
+
+                <label>Description</label>
+                <textarea rows="4" id="description" placeholder="Optional"></textarea>
+
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="../js/addProduct.js"></script>
 </body>
+
 </html>

@@ -6,20 +6,20 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 const PORT = 5000;
+
+app.use("/uploads", express.static("uploads"));
 
 const kisanRoutes = require("./routes/kisanRoutes");
 const buyerRoutes = require("./routes/buyerRoutes");
 const productRoutes = require("./routes/productRoutes");
-const orderRoutes = require("./routes/orderRoutes")
-
+const orderRoutes = require("./routes/orderRoutes");
 
 app.use("/api/kisan", kisanRoutes);
 app.use("/api/buyer", buyerRoutes);
 app.use("/api/products", productRoutes);
-app.use("/api/orders", orderRoutes)
-
-
+app.use("/api/orders", orderRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)

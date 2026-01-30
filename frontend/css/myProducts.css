@@ -155,14 +155,13 @@ dialog::backdrop {
   color: #555;
 }
 
-#editForm input, #edit-category  {
+#editForm input,
+#edit-category {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 1rem;
 }
-
-
 
 /* 4. Action Buttons */
 .modal-actions {
@@ -200,4 +199,12 @@ button[type="button"] {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.product-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }

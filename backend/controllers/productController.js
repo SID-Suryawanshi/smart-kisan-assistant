@@ -2,6 +2,7 @@ const Product = require("../models/Product");
 
 exports.add = async (req, res) => {
   console.log("Request Body : ", req.body);
+  console.log("Rested file : ", req.file);
 
   try {
     const product = new Product({
@@ -10,11 +11,12 @@ exports.add = async (req, res) => {
       price: req.body.price,
       quantity: req.body.quantity,
       description: req.body.description,
+      image: req.file.filename,
       kisanId: req.body.kisanId,
     });
 
     await product.save();
-    console.log(product);
+    // console.log(product);
 
     res.status(201).json({
       message: "Product added successfully",

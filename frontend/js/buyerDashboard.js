@@ -62,6 +62,18 @@ function renderProducts(products) {
   products.forEach((grocery) => {
     const html = `
       <div class="product">
+
+          <img
+  src="${
+    grocery.image
+      ? `http://localhost:5000/uploads/${grocery.image}`
+      : '../images/no-image.png'
+  }"
+  class="product-img"
+  alt="${grocery.name}"
+/>
+
+
             <h4>${grocery.name}</h4>
             <h5>Farmer : ${grocery.kisanId.name || "Certified farmer"}</h5>
             <p>₹${grocery.price} / kg</p>
